@@ -6,4 +6,8 @@ create table tb_user (
 
 
 select * 
-from  TB_USER
+from  TB_USER  
+
+
+
+sss
