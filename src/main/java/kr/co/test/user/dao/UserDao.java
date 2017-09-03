@@ -15,8 +15,12 @@ public class UserDao {
 	public void add(User user) throws ClassNotFoundException, SQLException {
 		
 		//jdbc:oracle:thin:@localhost:1521:XE
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
+		
+		//중복되는 db Connection객체 제거
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
+		
+		Connection con = getConnection();
 		
 		PreparedStatement ps = con.prepareStatement(
 				"insert into tb_user(userid, name, password) values(?,?,?)");
@@ -32,8 +36,13 @@ public class UserDao {
 	}
 	
 	public User get(String id) throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
+		//중복되는 db Connection객체 제거
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
+		
+		Connection con = getConnection();
+		
+		
 		
 		PreparedStatement ps = con.prepareStatement("select * from tb_user where userid = ?");
 		
@@ -51,8 +60,17 @@ public class UserDao {
 		con.close();
 		
 		return user;
-		
-		
 	}
+	
+
+	
+	//db연결과 관련된부분에 변경이 일어났을경우 이메소드만 바꿔주면 된다.
+	public Connection getConnection() throws ClassNotFoundException, SQLException{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
+		
+		return con;
+	}
+		
 
 }
