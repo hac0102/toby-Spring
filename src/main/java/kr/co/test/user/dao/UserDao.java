@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.api.mysqla.result.Resultset;
-
 import kr.co.test.user.domain.User;
+
+
 
 public class UserDao {
 	
@@ -35,14 +35,14 @@ public class UserDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
 		
-		PreparedStatement ps = con.prepareStatement("select * from tb_user where userId = ?");
+		PreparedStatement ps = con.prepareStatement("select * from tb_user where userid = ?");
 		
 		ps.setString(1, id);
 		
 		ResultSet rs = ps.executeQuery();
 		rs.next();
 		User user = new User();
-		user.setId(rs.getString("id"));
+		user.setId(rs.getString("userid"));
 		user.setName(rs.getString("name"));
 		user.setPassword(rs.getString("password"));
 		
@@ -51,7 +51,6 @@ public class UserDao {
 		con.close();
 		
 		return user;
-		
 		
 		
 	}

@@ -5,5 +5,10 @@ create table tb_user (
 )
 
 
+
+
 select * 
 from  TB_USER  
+where userid='whiteship'
+
+delete tb_user
