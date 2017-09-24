@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.test.repository.dao.AbcDAO">
+
+	<resultMap type="userVO" id="userMap">
+		<result property="userNo" column="user_no" />
+		<result property="userEmail" column="user_email" />
+		<result property="userNickName" column="user_nick_name" />
+		<result property="userPsw" column="user_psw" />
+		<result property="userRegDate" column="user_reg_date" />
+		<result property="userJoinNo" column="user_join_no" />
+		<result property="userConf" column="user_conf" />
+		<result property="userImgNo" column="user_img_no" />
+		<result property="userImgPath" column="user_img_path"/>
+	</resultMap>	
+	
+	
+	<select id="getList" resultMap="userMap">
+		select * 
+		from   tb_user
+	</select>
+
+</mapper>

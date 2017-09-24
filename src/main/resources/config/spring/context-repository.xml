@@ -43,25 +43,25 @@
 		</tx:attributes>
 	</tx:advice>
 	
-<!-- 	<aop:config> -->
-<!-- 		<aop:pointcut id="tranMethod" -->
-<!-- 		              expression="execution(public * kr.co.coily..*ServiceImpl.*(..)) "/> -->
-<!-- 		<aop:advisor advice-ref="txAdvice" pointcut-ref="tranMethod" /> -->
-<!-- 	</aop:config> -->
+	<aop:config>
+		<aop:pointcut id="tranMethod"
+		              expression="execution(public * kr.co.test..*ServiceImpl.*(..)) "/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="tranMethod" />
+	</aop:config>
 	
-<!-- 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
-<!-- 		<property name="dataSource" ref="dataSource" /> -->
-<!-- 		<property name="typeAliasesPackage" value="kr.co.coily.repository.vo" />			 -->
-<!-- 		<property name="mapperLocations" value="classpath:config/sqlmap/mysql/*.xml" />  -->
-<!-- 		<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml" />		 -->
-<!-- 	</bean> -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="kr.co.test.repository.vo" />			
+		<property name="mapperLocations" value="classpath:config/sqlmap/mysql/*.xml" /> 
+		<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml" />		
+	</bean>
 	
-<!-- 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> -->
-<!-- 		<property name="basePackage" value="kr.co.coily.repository.dao" /> -->
-<!-- 	</bean> -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kr.co.test.repository.dao" />
+	</bean>
 	
-<!-- 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> -->
-<!-- 		<constructor-arg ref="sqlSessionFactory" /> -->
-<!-- 	</bean> -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
 	
 </beans>
